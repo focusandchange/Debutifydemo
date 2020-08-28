@@ -165,13 +165,7 @@ export const Integration: FC = () => {
     data.product.variants[0].price
   );
 
-  const [number, setNumber] = useState(1);
   const [src, setSrc] = useState(data.product.images[0].src);
-  const onChange = (value: number) => {
-    if (value > 0) {
-      setNumber(value);
-    }
-  };
 
   function onChangeColor(value: number) {
     for (let i = 0; i < productImages.length; i++) {
