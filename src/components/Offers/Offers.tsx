@@ -1206,15 +1206,27 @@ const Svg = styled.svg`
 `;
 
 interface ProductFragment {}
-
+interface ProductVariants {
+  [x: string]: any;
+}
 interface OffersProp {
   productOptions: ProductFragment[];
+
+  productVariantPrice: number;
   onChangeColor: (value: number) => void;
+  onClickAddToCart: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
   // value: number; // 初始的数量
   // onChange: (value: number) => void; // 数量改变
 }
 
-export const Offers: FC<OffersProp> = ({ productOptions, onChangeColor }) => {
+export const Offers: FC<OffersProp> = ({
+  productOptions,
+  onChangeColor,
+  onClickAddToCart,
+  productVariantPrice,
+}) => {
   const [number, setNumber] = useState(1);
 
   const onChange = (value: number) => {
@@ -1234,7 +1246,7 @@ export const Offers: FC<OffersProp> = ({ productOptions, onChangeColor }) => {
           <ComparePrice></ComparePrice>
         </ProductSinglePriceWrapperHide>
         <ComparePriceA11y>Sale price</ComparePriceA11y>
-        <ProductPrice aria-hidden="false">¥8,200</ProductPrice>
+        <ProductPrice aria-hidden="false">{productVariantPrice}</ProductPrice>
       </PriceWrapper>
       <InventoryQuantityMain>
         <InventoryQuantity>
@@ -1277,7 +1289,7 @@ export const Offers: FC<OffersProp> = ({ productOptions, onChangeColor }) => {
               return newProductOptions.values.map(
                 (newProductOptionValues: any, index: number) => {
                   return (
-                    <SwatchElement>
+                    <SwatchElement key={newProductOptionValues}>
                       <SwatchLabel
                         background={newProductOptionValues}
                         onClick={() => {
@@ -1327,7 +1339,7 @@ export const Offers: FC<OffersProp> = ({ productOptions, onChangeColor }) => {
         </QuantityContainer>
       </QuantityWrapper>
       <ButtonMain>
-        <AddToCart>
+        <AddToCart onClick={onClickAddToCart}>
           <ButtonText>
             <ButtonShoppingBag></ButtonShoppingBag>
 

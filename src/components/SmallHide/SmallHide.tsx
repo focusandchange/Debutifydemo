@@ -166,6 +166,10 @@ const SprIconSprIconStarEmpty = styled.i`
   }
 `;
 
+// interface SmallHideProp {
+
+// }
+
 export const SmallHide: FC = () => {
   return (
     <SmallHideMain>

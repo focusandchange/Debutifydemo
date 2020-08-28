@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import React from "react";
 import styled from "styled-components";
 
@@ -325,7 +325,7 @@ export const ProductPhoto: FC<ProductPhotoProp> = ({
           <SlickTrack>
             {productImages.map((newProductImages: any) => {
               return (
-                <GridItem>
+                <GridItem key={newProductImages.id}>
                   <ProductSingleThumbnail>
                     <ProductSingleThumb
                       onClick={() => {

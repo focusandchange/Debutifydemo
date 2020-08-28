@@ -78,7 +78,7 @@ const Symbol = styled.span`
 
   color: #212528;
 
-  font-family: "Font Awesome 5 Brands";
+  font-family: "Font Awesome 5 Brands,sans-serif";
   font-size: 16px;
   font-weight: 700;
   font-style: normal;

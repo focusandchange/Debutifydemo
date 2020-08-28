@@ -84,8 +84,8 @@ const ProductTabsHeaderWrapper = styled.div`
   text-rendering: optimizeLegibility;
 `;
 
-const ContentWrapper = styled.div<{ display: boolean }>`
-  display: ${(props) => (props.display ? "block" : "none")};
+const ContentWrapper = styled.div<{ spread: boolean }>`
+  display: ${(props) => (props.spread ? "block" : "none")};
 
   box-sizing: border-box;
   margin-bottom: 0;
@@ -281,6 +281,61 @@ const SprBadgeCaption = styled.span`
   text-rendering: optimizeLegibility;
 `;
 
+const Image = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  list-style: none;
+
+  user-select: none;
+  text-align: center !important;
+
+  color: #212528;
+  border: 0 none;
+  border-radius: 3px;
+
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+
+  box-sizing: border-box;
+  margin-bottom: 0;
+  padding-top: 66.69921875%;
+
+  list-style: none;
+
+  user-select: none;
+  text-align: center !important;
+
+  color: #212528;
+
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+`;
+
 export const ProductTabs: FC = () => {
   const [Details, setDetails] = useState(false);
   const [Reviews, setReviews] = useState(false);
@@ -299,8 +354,12 @@ export const ProductTabs: FC = () => {
             <ProductTabsListIcon></ProductTabsListIcon>
             <ProductTabsHeaderTitle>Details</ProductTabsHeaderTitle>
           </ProductTabsHeaderWrapper>
-          <ContentWrapper display={Details}>
-            <Content></Content>
+          <ContentWrapper spread={Details}>
+            <Content>
+              Walk the line between dress and casual and add these smart
+              sneakers to your rotation. With their simple soles, a heritage
+              stripe and perfect fit, you'll wear them all year round.
+            </Content>
           </ContentWrapper>
         </ProductTabsItem>
         <ProductTabsItem>
@@ -326,7 +385,7 @@ export const ProductTabs: FC = () => {
               </SprBadge>
             </ReviewBadge>
           </ProductTabsHeaderWrapper>
-          <ContentWrapper display={Reviews}>
+          <ContentWrapper spread={Reviews}>
             <Content></Content>
           </ContentWrapper>
         </ProductTabsItem>
@@ -342,8 +401,12 @@ export const ProductTabs: FC = () => {
             <ProductTabsListIcon></ProductTabsListIcon>
             <ProductTabsHeaderTitle>Rich text</ProductTabsHeaderTitle>
           </ProductTabsHeaderWrapper>
-          <ContentWrapper display={RichText}>
-            <Content></Content>
+          <ContentWrapper spread={RichText}>
+            <Content>
+              <ImageWrapper>
+                <Image src="//cdn.shopify.com/s/files/1/0108/0999/9419/files/happy-playful-young-man_300x300.jpg?v=1564205002"></Image>
+              </ImageWrapper>
+            </Content>
           </ContentWrapper>
         </ProductTabsItem>
       </ProductTabsWrapper>

@@ -15,8 +15,14 @@ stories.addParameters({
   },
 });
 
-stories.add("默认", () => {
-  const [productOptions, setProductOptions] = useState(data.product.options);
+// stories.add("默认", () => {
+//   const [productOptions, setProductOptions] = useState(data.product.options);
 
-  return <Offers productOptions={productOptions} onChangeColor={() => {}} />;
-});
+//   return (
+//     <Offers
+//       productOptions={productOptions}
+//       onChangeColor={() => {}}
+//       onClickAddToCart={() => {}}
+//     />
+//   );
+// });

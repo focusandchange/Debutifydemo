@@ -24,6 +24,7 @@ const Body = styled.div`
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 `;
+
 const Wrapper = styled.div`
   box-sizing: border-box;
   max-width: 1150px;
@@ -160,6 +161,10 @@ const TextLink = styled.a`
 export const Integration: FC = () => {
   const [productImages, setProductImages] = useState(data.product.images);
   const [productOptions, setProductOptions] = useState(data.product.options);
+  const [productVariantPrice, setProductVariantPrice] = useState(
+    data.product.variants[0].price
+  );
+
   const [number, setNumber] = useState(1);
   const [src, setSrc] = useState(data.product.images[0].src);
   const onChange = (value: number) => {
@@ -174,11 +179,18 @@ export const Integration: FC = () => {
         setSrc(productImages[i].src);
       }
     }
+    for (let i = 0; i < data.product.variants.length; i++) {
+      if (data.product.variants[i].position == value + 1) {
+        setProductVariantPrice(data.product.variants[i].price);
+      }
+    }
   }
   function onSetSrc(value: String) {
     setSrc(value);
   }
-
+  function onClickAddToCart() {
+    console.log("AddToCart");
+  }
   return (
     <Body>
       <Wrapper>
@@ -193,15 +205,18 @@ export const Integration: FC = () => {
             <RightSection>
               <SmallHide></SmallHide>
               <Offers
+                productVariantPrice={productVariantPrice}
                 productOptions={productOptions}
                 onChangeColor={onChangeColor}
+                onClickAddToCart={onClickAddToCart}
               ></Offers>
               <ProductTabs></ProductTabs>
               <SocialSharing></SocialSharing>
               <ProductTags>
                 <span>Tags: </span>
-
-                <TextLink href="/collections/all/textile">Textile</TextLink>
+                <TextLink href="https://debutifydemo.myshopify.com/collections/all/textile">
+                  Textile
+                </TextLink>
               </ProductTags>
             </RightSection>
           </RightSectionWrapper>
