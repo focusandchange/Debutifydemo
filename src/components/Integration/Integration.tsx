@@ -169,9 +169,11 @@ export const Integration: FC = () => {
   };
 
   function onChangeColor(value: number) {
-    console.log("!!!");
-    console.log(value);
-    console.log("!!!");
+    for (let i = 0; i < productImages.length; i++) {
+      if (productImages[i].position == value + 1) {
+        setSrc(productImages[i].src);
+      }
+    }
   }
   function onSetSrc(value: String) {
     setSrc(value);

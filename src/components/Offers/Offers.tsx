@@ -1275,13 +1275,13 @@ export const Offers: FC<OffersProp> = ({ productOptions, onChangeColor }) => {
           {productOptions.map((newProductOptions: any) => {
             if (newProductOptions.name == "Color") {
               return newProductOptions.values.map(
-                (newProductOptionValues: any) => {
+                (newProductOptionValues: any, index: number) => {
                   return (
                     <SwatchElement>
                       <SwatchLabel
                         background={newProductOptionValues}
                         onClick={() => {
-                          onChangeColor(newProductOptionValues);
+                          onChangeColor(index);
                         }}
                       ></SwatchLabel>
                     </SwatchElement>
